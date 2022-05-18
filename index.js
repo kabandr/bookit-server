@@ -1,22 +1,27 @@
 import express from "express";
 import dotenv from "dotenv";
+import compression from "compression";
+import helmet from "helmet";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js";
 import usersRoute from "./routes/users.js";
 import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 import cookieParser from "cookie-parser";
+
 const app = express();
+app.use(helmet());
+app.use(compression());
 dotenv.config();
 
-const port = process.env.SERVER_PORT;
+const port = process.env.SERVER_PORT ;
 
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to MongoDB!");
   } catch (error) {
-    throw error;
+    throw Error;
   }
 };
 

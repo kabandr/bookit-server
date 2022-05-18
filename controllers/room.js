@@ -12,7 +12,7 @@ export const createRoom = async (req, res, next) => {
         $push: { rooms: savedRoom._id },
       });
     } catch (error) {
-      next(err);
+      next(error);
     }
     res.status(200).json(savedRoom);
   } catch (error) {
@@ -58,7 +58,7 @@ export const deleteRoom = async (req, res, next) => {
       $pull: { rooms: req.params.id },
     });
   } catch (error) {
-    next(err);
+    next(error);
   }
   try {
     await Room.findByIdAndDelete(req.params.id);
