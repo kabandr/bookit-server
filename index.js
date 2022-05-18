@@ -14,7 +14,7 @@ app.use(helmet());
 app.use(compression());
 dotenv.config();
 
-const port = process.env.SERVER_PORT ;
+const port = process.env.SERVER_PORT || 8000;
 
 const connect = async () => {
   try {
