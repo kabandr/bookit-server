@@ -35,7 +35,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
   res.send({ msg: "testing route..." });
 });
 app.use("/api/auth", authRoute);
